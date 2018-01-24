@@ -9,5 +9,13 @@ namespace XGame.Domain.Arguments.Jogador
 
         public string Message { get; set; }
 
+        public static explicit operator AdicionarJogadorResponse(Entities.Jogador jogador)
+        {
+            return new AdicionarJogadorResponse()
+            {
+                Id = jogador.Id,
+                Message = Properties.Message.OPERACAO_REALIZADA_COM_SUCESSO
+            };
+        }
     }
 }
