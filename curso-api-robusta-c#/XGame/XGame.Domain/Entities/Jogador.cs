@@ -8,7 +8,7 @@ using XGame.Domain.ValueObjects;
 
 namespace XGame.Domain.Entities
 {
-    public class Jogador : Notifiable
+    public class Jogador : EntityBase
     {
         public Jogador(Email email, string senha)
         {
@@ -18,6 +18,11 @@ namespace XGame.Domain.Entities
 
             new AddNotifications<Jogador>(this)
                 .IfNullOrInvalidLength(x => x.Senha, 6, 32, Message.X0_OBRIGATORIA_E_DEVE_CONTER_ENTRE_X1_E_X2_CARACTERES.ToFormat("Senha", 6, 32));
+
+            if (IsValid())
+            {
+                Senha = Senha.ConvertToMD5();
+            }
         }
 
         public Jogador(Nome nome, Email email, string senha)
@@ -48,9 +53,7 @@ namespace XGame.Domain.Entities
 
             AddNotifications(nome, email);
         }
-
-        public Guid Id { get; private set; }
-
+        
         public Nome Nome { get; private set; }
 
         public Email Email { get; private set; }
