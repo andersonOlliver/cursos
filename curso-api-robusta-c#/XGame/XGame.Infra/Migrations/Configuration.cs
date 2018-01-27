@@ -9,7 +9,7 @@ namespace XGame.Infra.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(XGame.Infra.Persistence.XGameContext context)

@@ -28,7 +28,7 @@ namespace XGame.Domain.Services
             var email = new Email(request.Email);
             var jogador = new Jogador(nome, email, request.Senha);
 
-            AddNotifications(email, jogador);
+            AddNotifications(jogador);
 
             if (IsInvalid())
             {

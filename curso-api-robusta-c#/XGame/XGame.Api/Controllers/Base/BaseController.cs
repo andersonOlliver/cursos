@@ -7,14 +7,14 @@ using System.Web.Http;
 using XGame.Domain.Interfaces.Services;
 using XGame.Infra.Transactions;
 
-namespace XGame.Api.Controllers
+namespace XGame.Api.Controllers.Base
 {
-    public class ControllerBase : ApiController
+    public class BaseController : ApiController
     {
         private readonly IUnitOfWork _unitOfWork;
         private IServiceBase _serviceBase;
 
-        public ControllerBase(IUnitOfWork unitOfWork)
+        public BaseController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
@@ -31,10 +31,9 @@ namespace XGame.Api.Controllers
 
                     return Request.CreateResponse(HttpStatusCode.OK, result);
                 }
-                catch (Exception ex)
+                catch
                 {
-                    // Aqui devo logar o erro
-                    return Request.CreateResponse(HttpStatusCode.Conflict, $"Houve um problema interno com o servidor. Entre em contato com o Administrador do sistema caso o problema persista. Erro interno: {ex.Message}");
+                    return Request.CreateResponse(HttpStatusCode.Conflict, $"Houve um problema interno com o servidor. Entre em contato com o Administrador do sistema.");
                 }
             }
             else
@@ -50,13 +49,10 @@ namespace XGame.Api.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            //Realiza o dispose no serviço para que possa ser zerada as notificações
-            if (_serviceBase != null)
+            if(_serviceBase != null)
             {
                 _serviceBase.Dispose();
             }
-
-            base.Dispose(disposing);
         }
     }
 }

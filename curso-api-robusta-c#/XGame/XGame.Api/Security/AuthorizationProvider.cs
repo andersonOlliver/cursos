@@ -34,22 +34,14 @@ namespace XGame.Api.Security
             {
                 IServiceJogador serviceJogador = _container.Resolve<IServiceJogador>();
 
+                AutenticarJogadorRequest request = new AutenticarJogadorRequest(context.UserName, context.Password);
+                
+                var response = serviceJogador.AutenticarJogador(request);
 
-                AutenticarJogadorRequest request = new AutenticarJogadorRequest();
-                request.Email = context.UserName;
-                request.Senha = context.Password;
-
-                AutenticarJogadorResponse response = serviceJogador.AutenticarJogador(request);
-
-
-
-                if (serviceJogador.IsInvalid())
+                if(serviceJogador.IsInvalid())
                 {
-                    if (response == null)
-                    {
-                        context.SetError("invalid_grant", "Preencha um e-mail válido e uma senha com pelo menos 6 caracteres.");
-                        return;
-                    }
+                    context.SetError("invalid_grant", "Preencha um e-mailo válido e uma senha com pelo menos 6 caracteres!");
+                    return;
                 }
 
                 serviceJogador.ClearNotifications();
@@ -69,9 +61,10 @@ namespace XGame.Api.Security
 
                 Thread.CurrentPrincipal = principal;
 
-                context.Validated(identity);
+                context.Validated();
+
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 context.SetError("invalid_grant", ex.Message);
                 return;

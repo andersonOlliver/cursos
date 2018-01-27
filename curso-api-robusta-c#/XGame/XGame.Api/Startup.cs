@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNet.WebApi.Extensions.Compression.Server;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.OAuth;
-using Microsoft.Practices.Unity;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Owin;
@@ -16,12 +15,13 @@ namespace XGame.Api
 {
     public class Startup
     {
+
         public void Configuration(IAppBuilder app)
         {
             HttpConfiguration config = new HttpConfiguration();
 
-            // Swagger
-            //SwaggerConfig.Register(config);
+            //Swagger
+            SwaggerConfig.Register(config);
 
             // Configure Dependency Injection
             var container = new UnityContainer();
@@ -34,10 +34,9 @@ namespace XGame.Api
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
 
             app.UseWebApi(config);
-
         }
 
-        public static void ConfigureWebApi(HttpConfiguration config)
+        private void ConfigureWebApi(HttpConfiguration config)
         {
             // Remove o XML
             var formatters = config.Formatters;
@@ -45,6 +44,7 @@ namespace XGame.Api
 
             //Compacta retorno de cada requisição realizada para api
             config.MessageHandlers.Insert(0, new ServerCompressionHandler(new GZipCompressor(), new DeflateCompressor()));
+
 
             // Modifica a identação
             var jsonSettings = formatters.JsonFormatter.SerializerSettings;
@@ -57,10 +57,8 @@ namespace XGame.Api
             Register(config);
         }
 
-        public static void Register(HttpConfiguration config)
+        private void Register(HttpConfiguration config)
         {
-            //add Uow action filter globally
-            //config.Filters.Add(new UnitOfWorkActionFilter());
 
             config.MapHttpAttributeRoutes();
 
@@ -73,7 +71,7 @@ namespace XGame.Api
 
         public void ConfigureOAuth(IAppBuilder app, UnityContainer container)
         {
-            OAuthAuthorizationServerOptions OAuthServerOptions = new OAuthAuthorizationServerOptions()
+            OAuthAuthorizationServerOptions oAuthServerOptions = new OAuthAuthorizationServerOptions()
             {
                 AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString("/token"),
@@ -81,7 +79,7 @@ namespace XGame.Api
                 Provider = new AuthorizationProvider(container)
             };
 
-            app.UseOAuthAuthorizationServer(OAuthServerOptions);
+            app.UseOAuthAuthorizationServer(oAuthServerOptions);
             app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
         }
     }

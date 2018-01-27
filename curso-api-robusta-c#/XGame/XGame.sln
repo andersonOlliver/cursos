@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XGame.Infra", "XGame.Infra\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XGame.IoC", "XGame.IoC\XGame.IoC.csproj", "{E8B4BC05-DB19-4F0C-9510-5BAFFD813392}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XGame.Api", "XGame.Api\XGame.Api.csproj", "{CA878CD5-26F7-4990-A37C-79A8B450CB5D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XGame.Api", "XGame.Api\XGame.Api.csproj", "{A2FA359E-AE9D-4655-B415-1C236BFA775A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{E8B4BC05-DB19-4F0C-9510-5BAFFD813392}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8B4BC05-DB19-4F0C-9510-5BAFFD813392}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8B4BC05-DB19-4F0C-9510-5BAFFD813392}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CA878CD5-26F7-4990-A37C-79A8B450CB5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CA878CD5-26F7-4990-A37C-79A8B450CB5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CA878CD5-26F7-4990-A37C-79A8B450CB5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CA878CD5-26F7-4990-A37C-79A8B450CB5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2FA359E-AE9D-4655-B415-1C236BFA775A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2FA359E-AE9D-4655-B415-1C236BFA775A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2FA359E-AE9D-4655-B415-1C236BFA775A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2FA359E-AE9D-4655-B415-1C236BFA775A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
