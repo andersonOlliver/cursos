@@ -25,7 +25,7 @@ const typeDefs = `
     }
 
     type Mutation{
-        crateUser(name: String!, email: String!): User
+        createUser(name: String!, email: String!): User
     }
 `;
 const resolvers = {
