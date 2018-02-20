@@ -13,7 +13,8 @@ class App {
     }
     middleware() {
         this.express.use('/graphql', graphqlHTTP({
-            schema: schema_1.default
+            schema: schema_1.default,
+            graphiql: true
         }));
     }
 }
