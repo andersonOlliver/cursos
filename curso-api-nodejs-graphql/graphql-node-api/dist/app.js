@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
 const graphqlHTTP = require("express-graphql");
-const schema_1 = require("./schema");
+const schema_1 = require("./graphql/schema");
 class App {
     /**
      *

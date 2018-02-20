@@ -1,6 +1,6 @@
 import * as express from 'express';
 import * as graphqlHTTP from 'express-graphql';
-import schema from './schema';
+import schema from './graphql/schema';
 
 class App {
     public express: express.Application;
