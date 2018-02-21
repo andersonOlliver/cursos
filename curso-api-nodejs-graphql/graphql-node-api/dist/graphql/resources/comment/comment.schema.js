@@ -18,12 +18,12 @@ const commentTypes = `
 `;
 exports.commentTypes = commentTypes;
 const commentQueries = `
-    comments(post: ID!, first: Int, offset: Int): [ Comment! ]!
+    commentsByPost(postId: ID!, first: Int, offset: Int): [ Comment! ]!
 `;
 exports.commentQueries = commentQueries;
 const commentMutations = `
     createComment(input: CommentInput!): Comment
-    updteComment(id: ID!, input: CommentInput!): Comment
+    updateComment(id: ID!, input: CommentInput!): Comment
     deleteComment(id: ID!): Boolean
 `;
 exports.commentMutations = commentMutations;
