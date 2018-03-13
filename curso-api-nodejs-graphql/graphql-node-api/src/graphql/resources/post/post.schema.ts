@@ -1,7 +1,7 @@
 const postTypes = `
     type Post {
         id: ID!
-        titulo: String!
+        title: String!
         content: String!
         photo: String!
         createdAt: String!

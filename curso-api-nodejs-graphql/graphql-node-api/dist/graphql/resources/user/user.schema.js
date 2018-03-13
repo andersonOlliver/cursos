@@ -30,7 +30,7 @@ const userTypes = `
 `;
 exports.userTypes = userTypes;
 const userQueries = `
-    users(firts: Int, offset: Int): [ User! ]!
+    users(firsts: Int, offset: Int): [ User! ]!
     user(id: ID!): User
 `;
 exports.userQueries = userQueries;
